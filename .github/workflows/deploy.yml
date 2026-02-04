@@ -3,18 +3,16 @@ name: Deploy Static Site to GitHub Pages
 on:
   push:
     branches:
-      - BRANCH_NAME_HERE  # replace this with your branch name (main or master)
+      - gh-pages
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+      - uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: website
